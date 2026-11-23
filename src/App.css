@@ -85,7 +85,7 @@ button, input {
   }
 }
 
-/* Para o footer ficar sempre bem embaixo na tela, sem dar bug e ficar em cima antes de carregar o conteúdo */
+/* Para o footer ficar sempre bem embaixo na tela */
 .App {
   display: flex;
   flex-direction: column;

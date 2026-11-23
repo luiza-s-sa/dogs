@@ -38,7 +38,6 @@ export const UserStorage = ({ children }) => {
     }
   }
 
-  // declaramos a função userLogout utilizando o hook useCallback pq ao adicionar ela como dependência no useEffect dá erro declarar ela como uma função 'normal', o ESlint diz que poderíamos declarar ela com o useCallback e assim fizemos!
   const userLogout = React.useCallback(async function () {
     setData(null);
     setError(null);
@@ -48,7 +47,6 @@ export const UserStorage = ({ children }) => {
   }, []);
 
   // login automático ao carregar a página se existir um token:
-  // (useEffect nesse caso deixamos aqui por último pq ele precisa de outras variáveis já estarem declaradas para acontecer)
   React.useEffect(() => {
     async function autoLogin() {
       const token = window.localStorage.getItem('token');

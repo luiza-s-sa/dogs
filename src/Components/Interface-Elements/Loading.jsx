@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Loading.module.css';
 
-// componente foi passado no FeedPhotos, FeedModal
 const Loading = () => {
   const [step, setStep] = React.useState(0);
 

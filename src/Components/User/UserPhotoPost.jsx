@@ -23,7 +23,7 @@ const UserPhotoPost = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // colocamos todos os dados a serem enviados dentro de um formData, pois como temos uma imagem a ser enviada, se enviássemos simplesmente um json não daria certo (comparar com o handleSubmit do LoginCreate)
+    // dados a serem enviados dentro de um formData (contém imagem)
     const formData = new FormData();
     formData.append('img', img.raw);
     formData.append('nome', nome.value);
@@ -37,8 +37,8 @@ const UserPhotoPost = () => {
 
   function handleImgChange({ target }) {
     setImg({
-      preview: URL.createObjectURL(target.files[0]), // a imagem para pré visualização
-      raw: target.files[0], // a imagem em si que será enviada no fetch
+      preview: URL.createObjectURL(target.files[0]), // imagem para pré visualização
+      raw: target.files[0], // imagem que será enviada no fetch
     });
   }
 

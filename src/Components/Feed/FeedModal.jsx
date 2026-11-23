@@ -6,12 +6,9 @@ import Error from '../Interface-Elements/Error';
 import Loading from '../Interface-Elements/Loading';
 import PhotoContent from '../Photo/PhotoContent';
 
-// 'photo' é apenas o nome da propriedade que passamos lá no componente dentro de Feed para definir o estado de modalPhoto! vamos usar este dado para fazer o fetch da foto com os comentários!
-// (se dá console.log em photo e em data, são coisas diferentes! usamos a photo para fazer o fetch e puxar data, que contém os comentários)
 const FeedModal = ({ photo, setModalPhoto }) => {
   const { data, error, loading, request } = useFetch();
 
-  // como vamos mostrar os comentários no modal, queremos que mostre sempre que ele estiver ativo:
   React.useEffect(() => {
     const { url, options } = PHOTO_GET(photo.id);
     request(url, options);

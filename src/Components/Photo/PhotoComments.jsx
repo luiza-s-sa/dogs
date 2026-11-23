@@ -6,7 +6,6 @@ import styles from './PhotoComments.module.css';
 const PhotoComments = ({ id, comments, single }) => {
   const { login } = React.useContext(UserContext);
   const [comment, setComment] = React.useState(() => comments);
-  // chamei de comment => tem uma propriedade importada de comments, não pode ter o mesmo nome!
   const commentsSection = React.useRef(null);
 
   React.useEffect(() => {

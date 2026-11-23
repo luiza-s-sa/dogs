@@ -1,9 +1,10 @@
 export const API_URL = 'https://dogsapi.origamid.dev/json';
 
-// criamos uma função para cada endpoint. nome das funções = nome do endpoint + tipo de método que utiliza
+// cada função devolve { url, options } para usar no fetch
+// nome = endpoint + método http
 
-// fetch para ENVIAR os dados do usuário e acessar o TOKEN
-// função que vai ser utilizada para enviar os dados do usuário, acessar o token e armazená-lo no local storage
+// AUTENTICAÇÃO:
+// envia usuário e senha, recebe o token:
 export function TOKEN_POST(body) {
   return {
     url: API_URL + '/jwt-auth/v1/token',
@@ -15,8 +16,7 @@ export function TOKEN_POST(body) {
   };
 }
 
-// fecth para VALIDAR o token
-// função que vai ser utilizada no useEffect, dentro da função autoLogin, para verificar se o token armazenado é um token válido e então fazer login automático
+// confere se token salvo ainda é valido:
 export function TOKEN_VALIDATE_POST(token) {
   return {
     url: API_URL + '/jwt-auth/v1/token/validate',
@@ -27,8 +27,8 @@ export function TOKEN_VALIDATE_POST(token) {
   };
 }
 
-// função para FAZER LOGIN
-// função que será utilizada para fazer o login do usuário. o login será feito através do token do usuário, que será acessado utilizando a função TOKEN_POST
+// USUÁRIO:
+// busca os dados do usuário logado:
 export function USER_GET(token) {
   return {
     url: API_URL + '/api/user',
@@ -39,7 +39,7 @@ export function USER_GET(token) {
   };
 }
 
-// função para POSTAR O USUÁRIO/CADASTRAR
+// cadastra um novo usuário
 export function USER_POST(body) {
   return {
     url: API_URL + '/api/user',
@@ -51,7 +51,8 @@ export function USER_POST(body) {
   };
 }
 
-// função para POSTAR FOTO DO USUÁRIO
+// FOTOS E COMENTÁRIOS:
+// postar foto:
 export function PHOTO_POST(formData, token) {
   return {
     url: API_URL + '/api/photo',
@@ -63,7 +64,7 @@ export function PHOTO_POST(formData, token) {
   };
 }
 
-// função para PUXAR FOTOS PARA O FEED
+// puxar fotos para feed:
 export function PHOTOS_GET({ page, total, user }) {
   return {
     url: `${API_URL}/api/photo/?_page=${page}&_total=${total}&_user=${user}`,
@@ -74,7 +75,7 @@ export function PHOTOS_GET({ page, total, user }) {
   };
 }
 
-// função para PUXAR FOTO PARA O MODAL!
+// puxar foto para o modal:
 export function PHOTO_GET(id) {
   return {
     url: `${API_URL}/api/photo/${id}`,
@@ -85,7 +86,6 @@ export function PHOTO_GET(id) {
   };
 }
 
-// função para postar comentários
 export function COMMENT_POST(id, body) {
   return {
     url: `${API_URL}/api/comment/${id}`,
@@ -100,7 +100,6 @@ export function COMMENT_POST(id, body) {
   };
 }
 
-// função para deletar foto
 export function PHOTO_DELETE(id) {
   return {
     url: `${API_URL}/api/photo/${id}`,
@@ -113,7 +112,7 @@ export function PHOTO_DELETE(id) {
   };
 }
 
-// função para quando o usuário perdeu a senha
+// SENHA
 export function PASSWORD_LOST(body) {
   return {
     url: API_URL + '/api/password/lost',
@@ -127,10 +126,9 @@ export function PASSWORD_LOST(body) {
   };
 }
 
-// função para resetar a senha
 export function PASSWORD_RESET(body) {
   return {
-    url: API_URL + 'api/password/reset',
+    url: API_URL + '/api/password/reset',
     options: {
       method: 'POST',
       headers: {
@@ -141,7 +139,7 @@ export function PASSWORD_RESET(body) {
   };
 }
 
-// função para buscar estatísticas
+// ESTATÍSTICAS
 export function STATS_GET() {
   return {
     url: API_URL + '/api/stats',

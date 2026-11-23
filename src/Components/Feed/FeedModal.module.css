@@ -7,7 +7,7 @@
   z-index: 1000;
   background: rgba(0, 0, 0, .4);
   display: flex;
-  padding: 2rem calc(4rem + 15px) 2rem 4rem; /* truque para descontar a barra de scroll e ficar centralizado */
+  padding: 2rem calc(4rem + 15px) 2rem 4rem; /* descontar a barra de scroll e ficar centralizado */
 }
 
 @media(max-width: 40rem) {
